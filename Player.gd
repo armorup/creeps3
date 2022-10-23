@@ -2,6 +2,8 @@ extends KinematicBody
 
 export var speed = 14
 export var fall_acceleration = 75
+export var jump_impulse = 20
+export var bound_impulse = 16
 
 var velocity = Vector3.ZERO
 
@@ -32,5 +34,17 @@ func _physics_process(delta):
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 	velocity.y -= fall_acceleration * delta
+
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
+			velocity.y += jump_impulse
+		
 	velocity = move_and_slide(velocity, Vector3.UP)
+
+	for index in range(get_slide_count()):
+		var collision = get_slide_collision(index)
+		if collision.collider.is_in_group("mob"):
+			var mob = collision.collider
+			if Vector3.UP.dot(collision.normal) > 0.1:
+				mob.squash()
+				velocity.y = bound_impulse
 		
