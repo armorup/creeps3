@@ -5,6 +5,8 @@ export var fall_acceleration = 75
 export var jump_impulse = 20
 export var bound_impulse = 16
 
+signal hit
+
 var velocity = Vector3.ZERO
 
 # Called when the node enters the scene tree for the first time.
@@ -48,3 +50,11 @@ func _physics_process(delta):
 				mob.squash()
 				velocity.y = bound_impulse
 		
+
+func die():
+	emit_signal("hit")
+	queue_free()
+
+
+func _on_MobDetector_body_entered(_body):
+	die()

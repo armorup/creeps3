@@ -42,10 +42,6 @@ transform = Transform( 1, 0, 0, 0, 0.0356495, 0.999364, 0, -0.999364, 0.0356495,
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-speed = 14
-fall_acceleration = 75
-jump_impulse = 20
-bound_impulse = 16
 
 [node name="CameraPivot" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
