@@ -10,6 +10,8 @@ on:
       - 'ACKNOWLEDGEMENTS'
       - '**.md'
 
+  workflow_dispatch:
+
 jobs:
   build_game:
     name: Build Game
