@@ -32,5 +32,6 @@ func _on_Player_hit():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept") and $UserInterface/Retry.is_visible():
+		# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 
