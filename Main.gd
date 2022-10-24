@@ -6,6 +6,7 @@ export (PackedScene) var mob_scene
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	$Music.play()
 	$UserInterface/Retry.hide()
 
 
@@ -27,11 +28,14 @@ func _on_MobTimer_timeout():
 
 func _on_Player_hit():
 	$MobTimer.stop()
+	$Music.stop()
+	$DeathSound.play()
 	$UserInterface/Retry.show()
 
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept") and $UserInterface/Retry.is_visible():
+		$Music.play()
 		# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 
