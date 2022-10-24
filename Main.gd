@@ -2,7 +2,6 @@ extends Node
 
 export (PackedScene) var mob_scene
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
